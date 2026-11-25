@@ -1,20 +1,13 @@
-# Registry of standards PolicyLens can compare a policy against.
-# Add a new block to support another document.
-#
-# Paths are relative to the repo root (run commands from there).
 standards:
   - id: pci-dss-4
     name: PCI DSS v4.0.1
-    # Download the PDF yourself from the PCI SSC document library
-    # (see docs/DATA.md) and save it with this exact file name.
     pdf: data/standards/PCI-DSS-v4_0_1.pdf
     output: data/processed/pci-dss-4.json
-    # Which top-level requirements to keep. Start with "6" only, then add
-    # "1", "2", ... once the pipeline works end to end.
     include_top_level: ["6"]
-    # Regexes for header/footer lines to drop. Run `policylens ingest pci-dss-4 --debug`,
-    # open data/processed/pci-dss-4.raw.txt, and add patterns for anything
-    # repeated on every page. These two are generic starting points.
+    layout:
+      left_col: [72, 293]   # x range in points of the Requirements column
+      top: 108              # ignore running page header above this y
+      bottom: 540           # ignore running footer below this y
+      pages: [138, 164]     # PDF page numbers (1-based) holding Requirement 6
     noise_patterns:
       - '^Page \d+( of \d+)?$'
-      - '^\d{1,3}$'
