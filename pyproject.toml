@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "policylens"
+version = "0.1.0"
+description = "Compare a security policy against a public standard (e.g. PCI DSS) using embeddings, then ask questions about the policy with RAG."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["pandas", "numpy", "pyyaml", "pdfplumber"]
+
+[project.optional-dependencies]
+ml = [
+  "sentence-transformers",
+  "chromadb",
+  "langchain-core",
+  "langchain-chroma",
+  "langchain-huggingface",
+  "langchain-ollama",
+]
+app = ["streamlit"]
+dev = ["pytest"]
+
+[project.scripts]
+policylens = "policylens.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

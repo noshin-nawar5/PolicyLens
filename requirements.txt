@@ -1,0 +1,4 @@
+# Installs the package in editable mode with all extras.
+# After you have a working environment, run `pip freeze > requirements-lock.txt`
+# and commit it so others get the same versions.
+-e .[ml,app,dev]

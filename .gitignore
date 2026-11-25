@@ -1,0 +1,16 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+.pytest_cache/
+.ipynb_checkpoints/
+chroma_db/
+
+# PCI DSS and other standards are copyrighted: never commit the PDFs
+# or the text extracted from them.
+data/standards/*
+!data/standards/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
